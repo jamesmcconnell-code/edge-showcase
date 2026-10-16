@@ -1,0 +1,197 @@
+/* ---------- page lock: one screen, no scroll ---------- */
+body.landing-page {
+  overflow: hidden;
+  height: 100dvh;
+}
+ 
+body.landing-page footer {
+  display: none;
+}
+ 
+body.landing-page main > .section.landing-container {
+  margin: 0;
+  padding: 0;
+}
+ 
+body.landing-page main > .section.landing-container > .landing-wrapper {
+  max-width: none;
+  padding: 0;
+}
+ 
+/* ---------- block ---------- */
+.landing {
+  --landing-ink: #111;
+  --landing-paper: #fff;
+  --landing-muted: #444;
+ 
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  height: calc(100dvh - var(--nav-height, 64px));
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+  box-sizing: border-box;
+  overflow: hidden;
+  color: var(--landing-ink);
+  background: var(--landing-paper);
+}
+ 
+/* text column */
+.landing .landing-details {
+  max-width: 560px;
+  z-index: 1;
+}
+ 
+.landing .landing-details h1,
+.landing .landing-details h2 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+ 
+.landing .landing-details p {
+  margin: 1.25em 0 0;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.6;
+  color: var(--landing-muted);
+}
+ 
+/* social icons */
+.landing .landing-social {
+  display: flex;
+  gap: 18px;
+  margin-top: 1.5rem;
+}
+ 
+.landing .landing-social-link {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  color: var(--landing-ink);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+ 
+.landing .landing-social-link:hover,
+.landing .landing-social-link:focus-visible {
+  transform: translateY(-3px);
+  opacity: 0.7;
+}
+ 
+.landing .landing-social-link svg {
+  width: 100%;
+  height: 100%;
+}
+ 
+/* buttons */
+.landing .landing-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 2rem;
+}
+ 
+.landing .landing-actions .button-container {
+  margin: 0;
+}
+ 
+.landing .landing-actions a.button {
+  display: inline-block;
+  margin: 0;
+  padding: 0.8em 1.8em;
+  border: 2px solid var(--landing-ink);
+  border-radius: 999px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1rem;
+  text-decoration: none;
+  background: var(--landing-ink);
+  color: var(--landing-paper);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+ 
+.landing .landing-actions a.button.secondary {
+  background: transparent;
+  color: var(--landing-ink);
+}
+ 
+.landing .landing-actions a.button:hover,
+.landing .landing-actions a.button:focus-visible {
+  background: var(--landing-paper);
+  color: var(--landing-ink);
+}
+ 
+.landing .landing-actions a.button.secondary:hover,
+.landing .landing-actions a.button.secondary:focus-visible {
+  background: var(--landing-ink);
+  color: var(--landing-paper);
+}
+ 
+/* image column: silhouette anchored to the bottom edge */
+.landing .landing-media {
+  align-self: stretch;
+  min-height: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+ 
+.landing .landing-media p,
+.landing .landing-media picture {
+  display: contents;
+  margin: 0;
+}
+ 
+.landing .landing-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  mix-blend-mode: multiply; /* drops the PNG's white background */
+}
+ 
+/* ---------- mobile: stack, still one screen ---------- */
+@media (width < 900px) {
+  .landing {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
+    align-items: start;
+    padding-top: 32px;
+  }
+ 
+  .landing .landing-details {
+    max-width: none;
+  }
+ 
+  .landing .landing-details p {
+    margin-top: 0.9em;
+  }
+ 
+  .landing .landing-actions {
+    margin-top: 1.25rem;
+  }
+ 
+  .landing .landing-media {
+    justify-content: center;
+  }
+ 
+  .landing .landing-media img {
+    object-position: bottom center;
+  }
+}
+ 
+/* short screens (landscape phones, small laptops) */
+@media (height < 640px) {
+  .landing .landing-details h1,
+  .landing .landing-details h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+  }
+ 
+  .landing .landing-details p {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+}
