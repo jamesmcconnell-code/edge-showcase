@@ -28,9 +28,9 @@ body.landing-page main > .section.landing-container > .landing-wrapper {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   height: calc(100dvh - var(--nav-height, 64px));
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 clamp(24px, 5vw, 80px);
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 clamp(24px, 5vw, 80px);
   box-sizing: border-box;
   overflow: hidden;
   color: var(--landing-ink);
@@ -150,6 +150,8 @@ body.landing-page main > .section.landing-container > .landing-wrapper {
   height: 100%;
   object-fit: contain;
   object-position: bottom right;
+  transform: scale(1.12);
+  transform-origin: bottom right;
   mix-blend-mode: multiply; /* drops the PNG's white background */
 }
  
@@ -159,7 +161,7 @@ body.landing-page main > .section.landing-container > .landing-wrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto minmax(0, 1fr);
     align-items: start;
-    padding-top: 32px;
+    padding: 32px 0 0 clamp(24px, 5vw, 80px);
   }
  
   .landing .landing-details {
@@ -175,11 +177,11 @@ body.landing-page main > .section.landing-container > .landing-wrapper {
   }
  
   .landing .landing-media {
-    justify-content: center;
+    justify-content: flex-end;
   }
- 
+
   .landing .landing-media img {
-    object-position: bottom center;
+    object-position: bottom right;
   }
 }
  
